@@ -12,7 +12,8 @@ window.ShowSound=(()=>{
   osc.connect(gain);gain.connect(ctx.destination);voices.add(osc);osc.onended=()=>{voices.delete(osc);osc.disconnect();gain.disconnect();};osc.start(at);osc.stop(at+duration+.02);
  }
  function play(name,duration=3200){
-  if(name==='spin'){let t=0;while(t<duration/1000-.12){tone(900,t,.045,'triangle',.09,400);t+=.045+.20*Math.pow(t/(duration/1000),2);}tone(180,0,.3,'sine',.08,420);}
+  if(name==='spin')tone(180,0,.3,'sine',.08,420);
+  if(name==='tick')tone(900,0,.045,'triangle',.09,400);
   if(name==='category'){tone(660,0,.2,'sine',.09);tone(990,.1,.35,'sine',.07);}
   if(name==='correct'){[523.25,659.25,783.99,1046.5].forEach((n,i)=>tone(n,i*.13,.35,'triangle',.085));[523.25,659.25,783.99].forEach(n=>tone(n,.55,.65,'sine',.035));}
   if(name==='wrong'){tone(294,0,.22,'triangle',.09,220);tone(220,.22,.4,'triangle',.08,147);}

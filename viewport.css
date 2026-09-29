@@ -1,0 +1,99 @@
+/* One viewport: reserve the controls and sponsor row, size the game to the remainder. */
+html,body{height:100%;overflow:clip}
+.shell,.shell:has(#stage[data-screen]){height:100dvh;min-height:0;padding:8px 24px 8px;display:grid;grid-template-rows:52px minmax(0,1fr) clamp(66px,9vh,100px);overflow:clip}
+header{min-height:0;gap:12px}.header-tools{gap:8px}.settings-icon{width:48px;height:48px}
+.bibliodera-brand{width:clamp(150px,15vw,230px);min-height:0;max-height:52px}
+#stage{min-height:0;container-type:size;overflow:clip}
+.brand-footer{padding:6px 0 0;min-height:0;gap:32px}
+.brand-footer .footer-youth{width:min(24vw,18vh,220px)}
+.brand-footer .municipality-brand{width:min(23vw,18vh,220px)}
+.cover,#stage[data-screen=girando] .split{height:100%;min-height:0;padding:0;gap:2vw;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)}
+.cover .visual,#stage[data-screen=girando] .visual{height:100%;min-height:0;padding:0}
+.cover .wheel-wrap,#stage[data-screen=girando] .wheel-wrap{width:min(48vw,calc(100cqh - 66px),980px);margin:24px 0 32px}
+.cover .sticker{top:12px;right:8px}.cover .spark-one{bottom:12px;left:8px}
+.wheel-foot{bottom:-30px}
+.cover h1.lettering-title{margin:0 auto 28px}
+#stage[data-screen=girando] h1{font-size:min(10vw,23cqh);line-height:.9;margin-bottom:20px}
+#stage>.split:not(.cover){padding:16px 0;gap:3vw}
+#stage[data-screen=girando]>.split{padding:0}
+.category-reveal h1{font-size:clamp(42px,min(12vw,24cqh),220px)}
+.question{padding:12px 2vw;min-height:0;align-self:center}
+.question h1{font-size:clamp(28px,min(4.5vw,10cqh),80px);line-height:1.05;margin-bottom:16px}
+.question .eyebrow{margin-bottom:12px}
+.response-time{margin:12px 0 18px}.time-label{margin-bottom:8px}
+.question .answers{margin-top:18px;gap:16px}
+.question .answer{min-height:clamp(70px,14cqh,120px);padding:16px;font-size:clamp(20px,min(2vw,4cqh),34px)}
+.burst{width:min(32vw,62cqh)}
+/* Configuration uses ordinary page scrolling, with its visible scrollbar. */
+html:has(#stage[data-screen^=configuracion]){height:auto;overflow-x:hidden;overflow-y:auto;scrollbar-width:auto;scrollbar-gutter:stable}
+body:has(#stage[data-screen^=configuracion]){height:auto;overflow:visible}
+.shell:has(#stage[data-screen^=configuracion]){height:auto;min-height:100dvh;display:flex;overflow:visible}
+.shell:has(#stage[data-screen^=configuracion]) header{min-height:52px;flex-shrink:0}
+#stage[data-screen^=configuracion]{container-type:normal;overflow:visible;display:block;flex:1}
+.shell:has(#stage[data-screen^=configuracion]) .brand-footer{margin-top:24px;flex-shrink:0}
+.shell:has(#stage[data-screen^=configuracion]) .brand-footer>div{transform:none}
+.settings{padding:16px 2vw}.settings-menu{padding:12px 2vw}
+.settings-choices{margin:24px 0}.settings-choices a{min-height:clamp(180px,32vh,280px)}
+@media(orientation:portrait),(max-width:850px){
+ .shell,.shell:has(#stage[data-screen]){padding:6px 16px;grid-template-rows:48px minmax(0,1fr) 64px}
+ .header-tools{gap:0}.bibliodera-brand{width:160px}
+ .brand-footer{gap:20px}.brand-footer .footer-youth,.brand-footer .municipality-brand{width:min(40vw,170px)}
+ .cover,#stage[data-screen=girando] .split{grid-template-columns:1fr;grid-template-rows:minmax(0,.36fr) minmax(0,.64fr);gap:0}
+ .cover .copy{align-self:center}.cover h1.lettering-title{max-width:650px;margin:0 auto 14px}
+ .cover p{font-size:clamp(15px,2.8vw,24px);margin-bottom:4px}.cover .setup-note{font-size:12px;margin-top:8px}
+ .cover .wheel-wrap,#stage[data-screen=girando] .wheel-wrap{width:min(calc(100vw - 72px),calc(64cqh - 48px),840px);margin:22px 0 26px}
+ .cover .sticker{display:none}.cover .spark-one{font-size:40px}
+ #stage[data-screen=girando] h1{font-size:min(13vw,10cqh);margin-bottom:10px}
+ #stage[data-screen=girando] .eyebrow{margin-bottom:8px}#stage[data-screen=girando] p{font-size:16px;margin-bottom:0}
+ .question{padding:8px 0}.question h1{font-size:clamp(22px,min(5.5vw,5cqh),54px)}
+ .question .answers{grid-template-columns:1fr;gap:10px;margin-top:12px}
+ .question .answer{min-height:58px;padding:10px 14px;font-size:clamp(16px,2.8cqh,24px);gap:12px}
+ .answer>span{min-width:36px;width:36px;height:36px}
+ .time-label{font-size:14px}.time-label strong{font-size:22px}.time-track{height:12px}
+ #stage>.split:not(.cover){gap:12px;padding:8px 0;align-content:center}
+ #stage>.split:not(.cover) h1{font-size:clamp(40px,8cqh,90px);margin-bottom:12px}
+ #stage>.split:not(.cover) p{font-size:clamp(16px,2.5cqh,24px);margin-bottom:10px}
+ .burst{width:min(48vw,27cqh)}.burst span{font-size:min(24vw,18cqh)}.visual-caption{margin-top:12px;font-size:14px}
+ .answer-note{font-size:16px;margin:12px 0}.demo-note{margin:8px 0}
+}
+
+/* Video overlay must remain attached to the viewport, outside game containment. */
+#stage[data-screen=loop]{container-type:normal;position:static;overflow:visible}
+
+/* Branding uses existing reserved rows; wheel dimensions stay unchanged. */
+header{z-index:auto}.bibliodera-brand{z-index:4}.header-tools{margin-left:auto;position:relative;z-index:5}
+.shell:has(#stage) .bibliodera-brand{position:absolute;left:20px;top:14px;width:clamp(260px,20vw,360px);max-height:none}
+.brand-footer{align-items:center;padding:0 0 2px;gap:clamp(48px,5vw,96px)}
+.brand-footer .footer-youth,.brand-footer .municipality-brand{width:min(24vh,280px)}
+@media(orientation:portrait),(max-width:850px){
+ .shell:has(#stage) .bibliodera-brand{left:8px;top:8px;width:clamp(175px,24vw,230px);max-width:calc(100vw - 160px)}
+ .brand-footer{gap:clamp(28px,5vw,52px)}
+ .brand-footer .footer-youth,.brand-footer .municipality-brand{width:min(42vw,210px)}
+}
+
+.brand-footer>.footer-youth,.brand-footer>.municipality-brand{transform:translateY(-12px)}
+
+/* Display text behaves as signage; editing remains normal in form fields. */
+body{cursor:default;user-select:none;-webkit-user-select:none;caret-color:transparent}
+input,textarea,[contenteditable="true"]{user-select:text;-webkit-user-select:text;caret-color:var(--ink);cursor:text}
+a,button,select,.import-label,.video-upload{cursor:pointer}
+button:disabled,input:disabled{cursor:default}
+
+/* Same logo landing bounds as the wheel; reserve space on editable pages. */
+#stage[data-screen^=configuracion]{padding-top:72px}
+.settings-menu .settings-choices{margin:32px auto;max-width:1300px}
+.settings-menu .settings-choices a{align-items:center;text-align:center}
+@media(orientation:portrait),(max-width:850px){#stage[data-screen^=configuracion]{padding-top:28px}.settings-menu .settings-choices{margin:24px auto}}
+
+/* Shared return action throughout configuration. */
+.settings .back-to-game{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:64px;flex-shrink:0;padding:10px 24px 10px 12px;border:2px solid transparent;border-radius:16px;background:var(--paper);color:var(--ink);box-shadow:0 5px 0 #4b0d1b55;font-size:20px;font-weight:800;line-height:1.2;text-decoration:none;touch-action:manipulation;transition:transform 120ms ease-out,box-shadow 120ms ease-out}
+.back-to-game-icon{width:40px;height:40px;display:grid;place-items:center;flex-shrink:0;border-radius:11px;background:var(--ink);color:var(--paper)}
+.settings .back-to-game:active{transform:translateY(3px);box-shadow:0 2px 0 #4b0d1b55}
+.settings .back-to-game:focus-visible{outline:3px solid var(--lime);outline-offset:5px}
+@media(max-width:500px){.settings .back-to-game{width:100%;min-height:60px;font-size:18px}}
+
+/* Questions first: a compact heading, followed directly by the editor. */
+#stage:is([data-screen=configuracion-preguntas],[data-screen=configuracion-loop]) .settings-heading{margin-bottom:24px}
+#stage:is([data-screen=configuracion-preguntas],[data-screen=configuracion-loop]) .settings-heading h1{margin-bottom:0}
+#settings-status:empty{display:none}
+#stage[data-screen=configuracion-preguntas] .category-editor{margin:32px 0 0;padding:28px 0 0;border-bottom:0;border-top:1px solid var(--edge)}
