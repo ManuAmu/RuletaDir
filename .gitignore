@@ -1,0 +1,6 @@
+# Capturas de revisión; los logos dentro de assets sí se versionan.
+/*.png
+/*.zip
+.DS_Store
+Thumbs.db
+node_modules/
