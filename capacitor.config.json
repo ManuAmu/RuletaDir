@@ -1,0 +1,13 @@
+{
+  "appId": "ar.gob.santiagociudad.bibliodera",
+  "appName": "La Bibliodera",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#a51524",
+    "allowMixedContent": false
+  },
+  "server": {
+    "androidScheme": "https",
+    "errorPath": "webview-required.html"
+  }
+}

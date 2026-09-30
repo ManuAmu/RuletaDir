@@ -4,3 +4,12 @@
 .DS_Store
 Thumbs.db
 node_modules/
+
+www/
+*.apk
+*.jks
+*.keystore
+local.properties
+.gradle/
+test-results/
+*.idsig

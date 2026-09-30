@@ -1,0 +1,36 @@
+{
+  "name": "la-biblodera",
+  "version": "1.0.0",
+  "description": "Experiencia táctil para la Dirección de la Juventud y Santiago Ciudad. HTML, CSS y JavaScript, sin dependencias de ejecución externas.",
+  "main": "app.js",
+  "scripts": {
+    "build": "node scripts/build-web.cjs",
+    "android:sync": "npm run build && cap sync android",
+    "android:open": "cap open android",
+    "test": "npm run build && node scripts/test-web.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManuAmu/RuletaDir.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ManuAmu/RuletaDir/issues"
+  },
+  "homepage": "https://github.com/ManuAmu/RuletaDir#readme",
+  "dependencies": {
+    "@capacitor/android": "8.5.2",
+    "@capacitor/core": "8.5.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.5.2",
+    "esbuild": "0.28.2",
+    "playwright": "1.63.0",
+    "postcss": "8.5.28",
+    "postcss-preset-env": "11.5.4"
+  },
+  "private": true
+}

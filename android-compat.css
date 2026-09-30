@@ -1,0 +1,53 @@
+/* Fallback geometry for Android 7 devices whose WebView lacks container units. */
+.legacy-webview,.legacy-webview body{height:100%;overflow:hidden}
+.legacy-webview .shell[data-stage]{height:100vh;padding:8px 24px;display:grid;grid-template-rows:52px minmax(0,1fr) 9vh;overflow:hidden}
+.legacy-webview #stage{overflow:hidden}
+.legacy-webview .shell .bibliodera-brand{width:20vw;min-width:260px;max-width:360px;position:absolute;left:20px;top:14px}
+.legacy-webview .header-tools>*+*{margin-left:8px}
+.legacy-webview .brand-footer>div+div{margin-left:5vw}
+.legacy-webview .brand-footer .footer-youth,.legacy-webview .brand-footer .municipality-brand{width:24vh;max-width:280px}
+.legacy-webview .cover,.legacy-webview #stage[data-screen=girando] .split{height:100%;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);grid-column-gap:2vw}
+.legacy-webview .cover .wheel-wrap,.legacy-webview #stage[data-screen=girando] .wheel-wrap{width:var(--legacy-wheel);height:var(--legacy-wheel);margin:24px 0 32px}
+.legacy-webview .wheel{background-size:100% 100%}
+.legacy-webview .wedge-label strong svg{width:calc(var(--legacy-wheel) * .08);height:calc(var(--legacy-wheel) * .08);max-width:56px;max-height:56px}
+.legacy-webview .wedge-label span{font-size:calc(var(--legacy-wheel) * .028);overflow-wrap:break-word}
+.legacy-webview.motion-ready #stage .hub-action>strong{font-size:calc(var(--legacy-wheel) * .085)}
+.legacy-webview .cover h1.lettering-title{width:100%;margin-bottom:28px}
+.legacy-webview .cover p{font-size:2vw}
+.legacy-webview h1{font-size:7vw}
+.legacy-webview #stage[data-screen=girando] h1{font-size:9vw;line-height:.9}
+.legacy-webview .category-reveal h1{font-size:10vw}
+.legacy-webview .question h1{font-size:4.2vw;line-height:1.05}
+.legacy-webview .question .answer{font-size:2vw;min-height:80px;padding:16px}
+.legacy-webview .answer>span{margin-right:16px;flex-shrink:0}
+.legacy-webview .burst{width:30vw;height:30vw;max-height:62vh}
+.legacy-webview .burst span{font-size:16vw}
+.legacy-webview[data-admin=true],.legacy-webview[data-admin=true] body{height:auto;overflow-x:hidden;overflow-y:auto}
+.legacy-webview .shell[data-admin=true]{height:auto;min-height:100vh;display:flex;overflow:hidden}
+.legacy-webview #stage[data-screen^=configuracion]{display:block;overflow:visible;padding-top:72px}
+.legacy-webview .settings{width:100%}
+.legacy-webview .settings h1{font-size:5vw}
+.legacy-webview .settings-choices strong{font-size:4vw}
+.legacy-webview .settings-choices span{font-size:20px}
+.legacy-webview .settings-choices a>*+*{margin-top:16px}
+.legacy-webview .form-actions>*,.legacy-webview .backup-actions>*,.legacy-webview .loop-actions>*{margin-right:16px;margin-bottom:12px}
+.legacy-webview .back-to-game-icon{margin-right:14px}
+.legacy-webview .loop-preview{width:100%;max-width:480px}
+.legacy-webview #stage[data-screen=loop]{overflow:visible}
+.legacy-webview button:focus,.legacy-webview a:focus{outline:3px solid var(--lime);outline-offset:3px}
+@media(max-width:850px),(orientation:portrait){
+ .legacy-webview .shell[data-stage]{padding:6px 16px;grid-template-rows:48px minmax(0,1fr) 64px}
+ .legacy-webview .shell .bibliodera-brand{width:24vw;min-width:175px;max-width:230px;left:8px;top:8px}
+ .legacy-webview .cover,.legacy-webview #stage[data-screen=girando] .split{grid-template-columns:1fr;grid-template-rows:minmax(0,.36fr) minmax(0,.64fr)}
+ .legacy-webview .cover h1.lettering-title{max-width:650px;margin-bottom:14px}
+ .legacy-webview .cover p{font-size:18px}
+ .legacy-webview #stage[data-screen=girando] h1{font-size:9vw}
+ .legacy-webview .question h1{font-size:5vw}
+ .legacy-webview .question .answer{font-size:18px;min-height:58px;padding:10px 14px}
+ .legacy-webview .brand-footer .footer-youth,.legacy-webview .brand-footer .municipality-brand{width:38vw;max-width:210px}
+ .legacy-webview #stage[data-screen^=configuracion]{padding-top:28px}
+ .legacy-webview .settings h1{font-size:48px}
+ .legacy-webview .settings-choices strong{font-size:40px}
+}
+
+.legacy-webview.motion-ready .hub-action{display:flex;align-items:center;justify-content:center;flex-direction:row}

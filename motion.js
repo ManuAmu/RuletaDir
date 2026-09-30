@@ -36,7 +36,7 @@ window.BiblioderaMotion=(()=>{
    const targets=stage.querySelectorAll('.copy>*:not(.lettering-title),.question-meta,.question>h1,.response-time,.answer,.category-reveal>*');
    if(!reduced()){
     if(saved.wheel){const wheel=stage.querySelector('.wheel-wrap'),b=wheel.getBoundingClientRect(),a=saved.wheel;gsap.from(wheel,{x:a.left-b.left,y:a.top-b.top,scale:a.width/b.width,transformOrigin:'0 0',duration:.45,ease:'power2.out'});}
-    gsap.from(targets,{opacity:0,y:24,duration:.4,stagger:.055,delay:id==='girando'?.45:0,ease:'power3.out'});
+    if(targets.length)gsap.from(targets,{opacity:0,y:24,duration:.4,stagger:.055,delay:id==='girando'?.45:0,ease:'power3.out'});
     if(id==='ruleta'){
      gsap.from(stage.querySelector('.wheel-wrap'),{scale:.94,opacity:0,duration:.5,ease:'power3.out'});
      // Invite touch while idle; the screen context cancels this when spinning starts.
@@ -77,7 +77,8 @@ window.BiblioderaMotion=(()=>{
     .to(state,{angle:travel,duration:total*.55,ease:'power2.out'});
   });
  }
- preference.addEventListener('change',()=>{if(reduced()){inviteTween?.revert();logoTween?.progress(1);spinTimeline?.progress(1);}});
+ const preferenceChanged=()=>{if(reduced()){inviteTween?.revert();logoTween?.progress(1);spinTimeline?.progress(1);}};
+ if(preference.addEventListener)preference.addEventListener('change',preferenceChanged);else preference.addListener(preferenceChanged);
  window.addEventListener('resize',()=>logoTween?.progress(1));
  return {capture,stop,exit,enter,spin};
 })();

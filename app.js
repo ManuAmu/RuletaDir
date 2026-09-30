@@ -25,7 +25,8 @@
  data.wheelRotation=1440-current.category*(360/data.categories.length);go('girando');}
  async function render(){const turn=++revision;stop();let id=location.hash.slice(1)||'ruleta';
  const locked=SettingsAccess.guard(id);if(locked)id='configuracion-acceso';
- const saved=motion.capture(id);motion.stop();transitioning=true;stage.inert=true;await motion.exit(id);if(turn!==revision)return;motion.stop();stage.inert=false;transitioning=false;starting=false;
+ const saved=motion.capture(id);motion.stop();transitioning=true;stage.inert=true;stage.setAttribute("inert","");await motion.exit(id);if(turn!==revision)return;motion.stop();stage.inert=false;stage.removeAttribute("inert");transitioning=false;starting=false;
+ if(window.AndroidLayout)AndroidLayout(id);
  if(locked){stage.dataset.screen=id;document.title='Acceso | La Bibliodera';SettingsAccess.render(stage,render);motion.enter(id,saved);return;}
  if(id==='loop'){stage.dataset.screen=id;document.title='Loop | La Bibliodera';VideoLoop.play(stage);return;}
  if(['configuracion','configuracion-preguntas','configuracion-loop'].includes(id)){stage.dataset.screen=id;SettingsUI.render(stage,id==='configuracion-loop'?'loop':id==='configuracion-preguntas'?'preguntas':'menu');document.title='Configuración | LA BIBLIODERA';motion.enter(id,saved);return;}
