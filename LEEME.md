@@ -10,7 +10,7 @@ Abrí `index.html` en Edge o Chrome. No necesita instalación ni conexión a int
 4. Tocá **Guardar pregunta y tiempo** para guardar ambos juntos. Podés editar o eliminar cada pregunta del listado.
 5. Volvé al juego y tocá **GIRAR** en el centro de la ruleta.
 
-El banco comienza vacío para que cargues contenido aprobado por el equipo. Las capturas incluidas ilustran la interfaz con una pregunta usada para verificarla; no se carga automáticamente en el juego.
+El proyecto incluye 40 preguntas aprobadas por el equipo: 10 por cada categoría de preguntas. Se cargan al iniciar por primera vez, sin reemplazar bancos ya guardados. Podés editarlas desde Configuración. La copia preguntas-bibliodera.json permite importarlas en otro equipo; esa importación reemplaza el banco después de confirmar. Las respuestas admiten hasta 120 caracteres.
 
 ## Recorrido
 
