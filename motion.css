@@ -10,3 +10,7 @@
 .motion-logo{position:fixed!important;margin:0!important;z-index:20;pointer-events:none;transform-origin:0 0;mix-blend-mode:screen}
 .motion-ready .confetti i{top:0}
 @media(prefers-reduced-motion:reduce){.motion-ready *, .motion-ready *::after{transition:none!important}}
+
+/* GSAP owns confetti transforms; CSS must not animate the same particles. */
+.motion-ready .confetti i{animation:none!important;width:14px;height:24px;will-change:transform,opacity}
+body>.confetti{position:fixed;inset:0;z-index:30;pointer-events:none;contain:strict}

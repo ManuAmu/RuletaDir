@@ -1,0 +1,81 @@
+/* Responsive composition: keep gameplay inside its reserved stage. */
+.brand-footer>.footer-youth,.brand-footer>.municipality-brand{transform:none;flex-shrink:0}
+.brand-footer .footer-youth,.brand-footer .municipality-brand{width:min(22vh,26vw,250px)}
+.brand-footer{gap:clamp(24px,5vw,96px);align-items:center;padding:4px 0}
+#stage .category-reveal{padding:12px;overflow-wrap:anywhere}
+#stage .category-reveal h1{font-size:clamp(32px,min(10vw,18cqh),180px);line-height:1.05}
+.settings-layout>*{min-width:0}.settings input,.settings select{min-width:0}
+@media(orientation:portrait){
+ .cover,#stage[data-screen=girando] .split{grid-template-rows:auto minmax(0,1fr);align-content:stretch}
+ .cover .copy{padding:4px 0 14px}
+ .cover h1.lettering-title{width:min(80vw,37vh,420px);margin:0 auto 6px}
+ .cover .match-home{max-width:500px;margin-top:6px!important}
+ .cover .visual,#stage[data-screen=girando] .visual{container-type:size}
+ .cover .wheel-wrap,#stage[data-screen=girando] .wheel-wrap{width:min(calc(100cqw - 34px),calc(100cqh - 50px),840px);margin:22px 0 28px}
+ #stage[data-screen=girando] .copy{padding:8px 0 16px;text-align:center}
+ #stage[data-screen=girando] .copy h1{font-size:clamp(32px,6cqh,76px);line-height:1}
+ #stage[data-screen=girando] .copy h1 br{display:none}
+ #stage[data-screen=girando] .copy p{margin:0 auto}
+ .wheel-wrap{container-type:inline-size}
+ .wheel .wedge-label span{font-size:clamp(8px,2.5cqw,18px);letter-spacing:0;margin-top:4px}
+ .wheel .wedge-label svg{width:10cqw;height:10cqw}
+ .wheel-wrap .hub-action>span{font-size:clamp(20px,9cqw,60px)}
+ #stage>.split.match-result,#stage[data-screen=premio]>.split{height:100%;grid-template-rows:auto auto;align-content:center;gap:16px;padding:8px 0}
+ #stage>.split.match-result h1,#stage[data-screen=premio]>.split h1{font-size:clamp(34px,7cqh,76px);margin-bottom:12px}
+ .match-result .eyebrow{margin-bottom:10px}
+ .match-result .copy p{font-size:clamp(14px,2.6cqh,22px);margin-bottom:8px}
+ .match-result .answer-note{font-size:clamp(13px,2.3cqh,18px);margin:8px auto;padding:8px 12px}
+ .match-result .demo-note{font-size:clamp(12px,2cqh,17px)!important;margin:8px 0}
+ .match-finish .result-medal{width:min(24vw,14cqh)}
+ .match-finish .result-medal>span{font-size:9cqh}
+ .match-finish .finish-score{margin-top:12px;font-size:32px}
+ .finish-caption{margin:6px 0 10px}
+ .brand-footer .footer-youth,.brand-footer .municipality-brand{width:min(32vw,130px)}
+}
+@media(orientation:landscape) and (max-width:1000px){
+ .shell,.shell:has(#stage[data-screen]):not(:has(#stage[data-screen^=configuracion])){padding:4px 16px;grid-template-rows:48px minmax(0,1fr) 54px}
+ .cover,#stage[data-screen=girando] .split,#stage>.split.match-result,#stage[data-screen=premio]>.split{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:1fr;gap:18px;height:100%}
+ .cover .visual,#stage[data-screen=girando] .visual{container-type:size}
+ .cover .wheel-wrap,#stage[data-screen=girando] .wheel-wrap{width:min(calc(100cqw - 30px),calc(100cqh - 42px));margin:18px 0 24px;container-type:inline-size}
+ .wheel .wedge-label span{font-size:clamp(8px,2.5cqw,16px);margin-top:3px;letter-spacing:0}
+ .wheel .wedge-label svg{width:10cqw;height:10cqw}
+ .wheel-wrap .hub-action>span{font-size:clamp(18px,9cqw,50px)}
+ .cover h1.lettering-title{width:min(90%,45vh);margin:0 auto 6px}
+ .cover .match-home{width:96%;padding:8px 12px;margin-top:6px!important}
+ .match-home .match-heading strong{font-size:clamp(22px,3vw,29px)}
+ .match-home .match-heading{margin-bottom:6px}
+ .match-home .step-symbol{width:30px;height:30px;font-size:22px}
+ .match-home .match-steps:before{top:14px}
+ .match-home .match-step{font-size:11px;gap:3px}
+ .match-home .match-invitation{font-size:14px;margin-top:6px;padding-top:6px}
+ .match-home .match-invitation small{font-size:11px}
+ .match-home .match-score b{font-size:32px}
+ .match-home .match-heading>.match-score{font-size:11px}
+ #stage[data-screen=girando] h1{font-size:min(9vw,23cqh)}
+ #stage>.split.match-result h1,#stage[data-screen=premio]>.split h1{font-size:clamp(30px,12cqh,66px);margin-bottom:10px}
+ .match-result .eyebrow{font-size:12px;margin-bottom:8px}
+ #stage>.split.match-result p{font-size:clamp(13px,4cqh,18px);margin-bottom:8px}
+ .match-result .answer-note{font-size:13px;padding:6px;margin:8px auto}
+ .match-result .demo-note{font-size:12px!important;margin:6px 0}
+ .match-finish .result-medal{width:23cqh}.match-finish .result-medal>span{font-size:15cqh}
+ .match-finish .finish-score{font-size:32px;margin-top:10px}.finish-caption{font-size:11px;margin:6px 0 10px}
+ .match-finish .step-symbol{width:32px;height:32px;font-size:22px}.match-finish .match-steps:before{top:15px}.match-finish .match-step{font-size:11px;gap:3px}
+ .brand-footer .footer-youth,.brand-footer .municipality-brand{width:100px}
+ .shell:has(#stage[data-screen=pregunta]) .footer-youth,.shell:has(#stage[data-screen=pregunta]) .municipality-brand{width:100px}
+ .shell:has(#stage[data-screen=pregunta]) .brand-footer{padding:4px 0}
+ .question .match-bar{grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:12px}
+ .match-bar .match-heading strong{font-size:28px}.match-bar .match-score b{font-size:32px}.match-bar .match-heading>.match-score{font-size:13px}
+ .match-bar .match-kicker{font-size:11px}.match-bar .step-symbol{width:32px;height:32px;font-size:25px}.match-bar .step-label{font-size:11px;line-height:1.2}.match-bar .match-steps:before{display:none}
+}
+@media(max-width:500px){
+ .settings .settings-heading{gap:16px}.settings-choices{grid-template-columns:1fr}
+ .settings .form-actions>*,.settings .backup-actions>*{width:100%;justify-content:center}
+ .settings .category-fields{grid-template-columns:1fr}
+}
+@media(orientation:portrait),(max-width:1000px){
+ .wheel-wrap .wheel .wedge-label strong svg{width:8cqw;height:8cqw;min-width:0;min-height:0}
+ .cover .wheel .wedge-label span,.wheel-wrap .wheel .wedge-label span{width:38%;font-size:clamp(8px,2.6cqw,18px);margin-top:3px;letter-spacing:0;line-height:1.05}
+ .wheel-wrap .hub-action>strong,.cover .wheel-wrap .hub-action>strong{font-size:clamp(20px,9cqw,58px)}
+}
+/* Keep the decorative background inside the scrollable administration page. */
+.shell:has(#stage[data-screen^=configuracion]):before{left:auto;right:0;max-width:100%;box-shadow:none}

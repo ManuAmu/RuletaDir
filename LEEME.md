@@ -10,13 +10,13 @@ Abrí `index.html` en Edge o Chrome. No necesita instalación ni conexión a int
 4. Tocá **Guardar pregunta y tiempo** para guardar ambos juntos. Podés editar o eliminar cada pregunta del listado.
 5. Volvé al juego y tocá **GIRAR** en el centro de la ruleta.
 
-El banco comienza vacío para que cargues contenido aprobado por el equipo. Las capturas incluidas ilustran la interfaz con una pregunta usada para verificarla; no se carga automáticamente en el juego.
+El proyecto incluye 40 preguntas aprobadas por el equipo: 10 por cada categoría de preguntas. Se cargan al iniciar por primera vez, sin reemplazar bancos ya guardados. Podés editarlas desde Configuración. La copia preguntas-bibliodera.json permite importarlas en otro equipo; esa importación reemplaza el banco después de confirmar. Las respuestas admiten hasta 120 caracteres.
 
 ## Recorrido
 
-Inicio con ruleta → giro → categoría grande durante 2 segundos → pregunta con barra de tiempo → ganaste / perdiste / tiempo agotado → volver a jugar.
+Partida de 3 preguntas: ruleta → categoría → pregunta → devolución → ruleta para la siguiente pregunta. Ganás al completar 3 respuestas correctas. El primer error termina inmediatamente la partida, sin presentar las preguntas restantes. El tiempo agotado también termina la partida. Premio Sorpresa mantiene su premio directo y Gira de nuevo permite otro giro: ninguno consume una pregunta ni cambia el marcador. Al finalizar se vuelve automáticamente a una partida nueva. Entrar a Configuración o recargar cancela la partida en curso, pero conserva el historial de preguntas utilizadas.
 
-Solo se seleccionan categorías con preguntas cargadas. La ruleta se detiene sobre la categoría elegida. Cuando hay más de una pregunta se evita repetir inmediatamente la anterior. La opción correcta es la marcada en Configuración; ya no depende de la letra A.
+Solo se seleccionan categorías con preguntas cargadas. La ruleta se detiene sobre la categoría elegida. Cada categoría agota sus preguntas antes de repetirlas, con historial guardado al cerrar. El nuevo ciclo no comienza con la última pregunta del anterior; si una categoría tiene una sola pregunta, necesariamente se repite. La opción correcta es la marcada en Configuración; ya no depende de la letra A.
 
 El tiempo aparece en una barra debajo de la pregunta y encima de las respuestas, con segundos numéricos. Los últimos cinco segundos se muestran en coral. Responder detiene el reloj; si vence el plazo, no se aceptan respuestas tardías. Entrar a Configuración cancela la ronda actual.
 
@@ -24,9 +24,9 @@ El tiempo aparece en una barra debajo de la pregunta y encima de las respuestas,
 
 Las preguntas y el tiempo se guardan en el almacenamiento local del navegador. No se sincronizan con otros dispositivos. Borrar los datos del navegador puede borrar el banco. En navegación privada pueden perderse al cerrar la sesión.
 
-**Exportar copia** descarga un JSON con preguntas y tiempo. **Importar copia** permite recuperarlo en otro dispositivo; pide confirmación antes de reemplazar el banco. La interfaz valida campos, límites y formato. Permite hasta 500 preguntas, 160 caracteres por pregunta y 70 por respuesta.
+**Exportar copia** descarga un JSON con preguntas y tiempo. **Importar copia** permite recuperarlo en otro dispositivo; pide confirmación antes de reemplazar el banco. La interfaz valida campos, límites y formato. Permite hasta 500 preguntas, 160 caracteres por pregunta y 120 por respuesta.
 
-Configuración está disponible sin contraseña. Esta entrega no incorpora backend, cuentas, bloqueo de operador ni kiosk mode.
+Configuración requiere la contraseña Absalon248. Al volver al juego o recargar, el acceso vuelve a bloquearse. Esta versión funciona localmente, sin backend ni cuentas.
 
 ## Diseño y organización
 
@@ -62,3 +62,7 @@ El nombre oficial es La Bibliodera. Se mantiene únicamente la clave interna ant
 
 Comportamiento vigente: no hay botón Volver a jugar en los resultados. Acierto, error y tiempo agotado regresan automáticamente a la ruleta después de 4 segundos (resultDuration en content.js). Desarrollo en curso.
 
+
+## Probabilidades locales
+
+Con las cuatro categorías de preguntas cargadas: 22,5 % cada una; Premio Sorpresa 5 % y Gira de nuevo 5 %. Los pesos se definen en content.js. Si una categoría queda sin preguntas, se excluye y se redistribuyen proporcionalmente los pesos disponibles.

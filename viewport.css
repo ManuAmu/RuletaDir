@@ -97,3 +97,25 @@ button:disabled,input:disabled{cursor:default}
 #stage:is([data-screen=configuracion-preguntas],[data-screen=configuracion-loop]) .settings-heading h1{margin-bottom:0}
 #settings-status:empty{display:none}
 #stage[data-screen=configuracion-preguntas] .category-editor{margin:32px 0 0;padding:28px 0 0;border-bottom:0;border-top:1px solid var(--edge)}
+
+/* Three-step scoreboard: large invitation on the wheel, progress strip in questions. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.match-progress{width:100%;font-family:var(--body,Arial,sans-serif);text-align:left}
+.match-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+.match-heading strong{font-family:var(--display);font-size:clamp(26px,2.3vw,44px);line-height:1.1}
+.match-heading>span{font-size:clamp(15px,1.2vw,24px);font-weight:700;white-space:nowrap}
+.match-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:0;margin:0}
+.match-step{display:flex;align-items:center;justify-content:center;gap:12px;min-height:58px;padding:8px 12px;border:2px solid #fff3dc66;border-radius:10px;color:var(--paper);background:#50132366;font-size:clamp(17px,1.4vw,27px);font-weight:700}
+.step-symbol{font-family:var(--display);font-size:1.5em;line-height:1}.is-current{background:#ffd879;color:#421520;border-color:#ffd879;box-shadow:0 3px 0 #5b1725}.is-hit{background:#fff3dc;color:#421520;border-color:#fff3dc}.is-miss{background:#521423;color:#fff3dc;border-color:#ffb29b}.is-pending{border-style:dashed}
+.question-meta{display:block}.question-meta>.eyebrow{margin-bottom:10px}.question .match-bar{margin:0 0 16px!important}.match-bar .match-heading{margin-bottom:8px}
+.cover .match-home{width:min(100%,650px);margin:22px auto 0!important;padding:clamp(16px,2vw,32px);border-radius:22px;background:#fff3dc;color:#421520;box-shadow:0 8px 0 #62162755}
+.match-home .match-heading{flex-direction:column;align-items:center;gap:6px;margin-bottom:18px}.match-home .match-heading strong{font-size:clamp(30px,3vw,56px);text-align:center}.match-home .match-heading>span{order:-1;letter-spacing:.12em;font-size:clamp(13px,1.1vw,18px)}
+.match-home .match-step{flex-direction:column;gap:6px;min-height:90px;padding:12px 8px;font-size:clamp(16px,1.4vw,24px);border-color:#a5152455;color:#421520;background:transparent}.match-home .is-current{background:#ffd879;border-color:#a51524;box-shadow:none}.match-home .is-hit{background:#421520;color:#fff3dc;border-color:#421520}.match-home .is-miss{background:#a51524;color:#fff3dc;border-color:#a51524}.match-home .step-symbol{font-size:1.8em}.match-invitation{text-align:center;margin-top:16px;font-size:clamp(17px,1.5vw,26px);font-weight:700}
+@media(max-height:760px) and (min-width:851px){.cover .match-home{margin-top:12px!important;padding:16px}.match-home .match-heading{margin-bottom:12px}.match-home .match-step{min-height:68px}.match-invitation{margin-top:10px}.match-step{min-height:46px}.question .match-bar{margin-bottom:8px!important}}
+@media(orientation:portrait),(max-width:850px){.cover .match-home{max-width:500px;padding:10px 14px;margin-top:8px!important;border-radius:14px}.match-home .match-heading{margin-bottom:8px;gap:3px}.match-home .match-heading strong{font-size:clamp(24px,5vw,36px)}.match-home .match-heading>span{font-size:11px}.match-home .match-step{min-height:44px;flex-direction:row;padding:4px;font-size:12px;gap:6px}.match-home .step-symbol{font-size:24px}.match-invitation{font-size:14px;margin-top:8px}.cover h1.lettering-title{margin-bottom:6px;max-width:420px}.match-heading strong{font-size:23px}.match-heading>span{font-size:13px}.match-step{min-height:40px;padding:4px;font-size:13px;gap:6px}.match-steps{gap:6px}.question .match-bar{margin-bottom:8px!important}.question-meta>.eyebrow{margin-bottom:6px}}
+
+/* Prevent touch callouts on the event interface. */
+.shell{-webkit-touch-callout:none}
+
+/* Allow form scrolling, without pinch or double-tap zoom on the event surface. */
+html,body,.shell{touch-action:pan-x pan-y}

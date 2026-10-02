@@ -20,3 +20,7 @@
 @media(max-width:850px){.cover{padding:18px 0;gap:12px}.cover h1.title{font-size:clamp(30px,8.3vw,70px)}.cover .eyebrow{font-size:12px;letter-spacing:.09em}.cover p{font-size:18px}.cover .setup-note{font-size:14px}.brand-footer{padding-top:24px}.youth-brand{width:170px}.cover .sticker{font-size:11px;padding:7px 10px}.cover .wheel-wrap{margin-bottom:28px}.cover .spark-one{font-size:48px}}
 /* TV horizontal: dos bloques equilibrados; vertical conserva la composición apilada. */
 @media(min-width:851px) and (orientation:landscape){.cover{grid-template-columns:1fr 1fr;gap:4vw;padding:22px 0;align-items:center}.cover h1.title{font-size:clamp(46px,5vw,96px)}.cover .wheel-wrap{width:min(39vw,58vh,680px);margin:25px 0 38px}.cover .sticker{right:0;top:0}.cover .spark-one{left:0;bottom:0}.cover .setup-note{max-width:440px}.brand-footer{padding:15px 0 5px}.municipality-brand{width:clamp(180px,16vw,260px)}.youth-brand{width:clamp(170px,14vw,230px)}}
+
+/* Three-question match status. */
+.match-progress{font-size:clamp(16px,1.5vw,26px)!important;font-weight:700;line-height:1.2;margin:12px 0!important;color:var(--paper)}
+.question-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.question-meta .match-progress{margin:0!important}

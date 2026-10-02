@@ -1,15 +1,16 @@
 // Categorías visuales. Las preguntas y el tiempo se administran desde Configuración.
 window.BiblioderaContent = {
+  questionsPerMatch: 3,
   spinDuration: 3200,
   categoryRevealDuration: 2000,
   resultDuration: 4000,
   categories: [
-    {label:'Universo Bibliodera', color:'#ffd879', icon:'libraryFridge'},
-    {label:'Cultura Santiagueña', color:'#ffb29b', icon:'folkMusic'},
-    {label:'Mitos y Leyendas', color:'#fff0ce', icon:'moon'},
-    {label:'Iconos de Santiago', color:'#f69e88', icon:'culturalCenter'},
-    {label:'Premio Sorpresa', color:'#eac9b1', icon:'gift', fixed:true},
-    {label:'Gira de nuevo', color:'#ffe4a7', icon:'rotate', fixed:true}
+    {label:'Universo Bibliodera', color:'#ffd879', icon:'libraryFridge', weight:22.5},
+    {label:'Cultura Santiagueña', color:'#ffb29b', icon:'folkMusic', weight:22.5},
+    {label:'Mitos y Leyendas', color:'#fff0ce', icon:'moon', weight:22.5},
+    {label:'Iconos de Santiago', color:'#f69e88', icon:'culturalCenter', weight:22.5},
+    {label:'Premio Sorpresa', color:'#eac9b1', icon:'gift', weight:5, fixed:true},
+    {label:'Gira de nuevo', color:'#ffe4a7', icon:'rotate', weight:5, fixed:true}
   ],
 };
 

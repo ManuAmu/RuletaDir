@@ -14,7 +14,7 @@ window.BiblioderaMotion=(()=>{
  function stop(){
   exitTween?.kill();exitTween=null;exitDone?.();exitDone=null;
   const pointer=stage.querySelector('.pointer');if(pointer)gsap.killTweensOf(pointer);
-  context?.revert();context=null;spinTimeline=null;inviteTween=null;logoTween?.kill();logo?.remove();logo=null;
+  context?.revert();context=null;document.querySelectorAll('.confetti').forEach(e=>e.remove());spinTimeline=null;inviteTween=null;logoTween?.kill();logo?.remove();logo=null;
   header.style.visibility='';
  }
  function exit(next){
@@ -48,16 +48,17 @@ window.BiblioderaMotion=(()=>{
      else gsap.fromTo(burst,{x:-16,opacity:.4},{x:0,opacity:1,duration:.4,ease:'power2.out'});
     }
     if(id==='categoria')gsap.from(stage.querySelector('h1'),{scale:.86,duration:.55,ease:'back.out(1.15)'});
-    if(id==='correcta'||id==='premio')celebrate();
+    if((id==='correcta'||id==='premio')&&stage.dataset.outcome==='victory')celebrate();
    }
   },stage);
   morph(saved.logo,id);
  }
  function celebrate(){
   const confetti=document.createElement('div');confetti.className='confetti';confetti.setAttribute('aria-hidden','true');
-  confetti.innerHTML=Array.from({length:24},(_,i)=>`<i style="left:${(i*37)%100}%;background:${['#ffd879','#fff3dc','#ffb29b'][i%3]}"></i>`).join('');stage.append(confetti);
-  gsap.fromTo(confetti.children,{y:-40,opacity:1},{y:()=>innerHeight+40,x:i=>(i%5-2)*55,rotation:i=>i%2?240:-240,opacity:0,duration:1.9,stagger:.018,ease:'power1.out',onComplete:()=>confetti.remove()});
+  confetti.innerHTML=Array.from({length:90},(_,i)=>`<i style="left:${(i*37)%100}%;background:${['#ffd879','#fff3dc','#ffb29b','#ffffff'][i%4]};border-radius:${i%3===0?'50%':'2px'}"></i>`).join('');document.body.append(confetti);
+  gsap.fromTo(confetti.children,{y:-45,opacity:1,rotation:i=>i*23},{y:()=>innerHeight+45,x:i=>(i%7-3)*45,rotation:i=>i%2?540:-540,opacity:.25,duration:2.8,stagger:.006,ease:'none',onComplete:()=>confetti.remove()});
  }
+
  function spin(rotation,duration,done){
   context.add(()=>{
    const wheel=stage.querySelector('.wheel'),pointer=stage.querySelector('.pointer');

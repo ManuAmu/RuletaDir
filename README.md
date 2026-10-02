@@ -8,7 +8,7 @@ Abrir `index.html` en Edge o Chrome, o servir esta carpeta con un servidor HTTP 
 
 ## Cargar contenido
 
-Desde el engranaje se pueden agregar y editar preguntas, marcar la respuesta correcta y guardar el tiempo junto con la pregunta. Los datos quedan en el navegador y se pueden exportar/importar como JSON. No se incluyen preguntas reales ni datos del navegador en Git.
+Desde el engranaje se pueden agregar y editar preguntas, marcar la respuesta correcta y guardar el tiempo junto con la pregunta. Los datos quedan en el navegador y se pueden exportar/importar como JSON. Se incluyen 40 preguntas proporcionadas por el equipo como banco inicial; los datos guardados previamente se conservan. preguntas-bibliodera.json contiene una copia importable.
 
 ## Recorrido
 
