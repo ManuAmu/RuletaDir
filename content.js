@@ -9,7 +9,7 @@ window.BiblioderaContent = {
     {label:'Cultura Santiagueña', color:'#ffb29b', icon:'folkMusic', weight:22.5},
     {label:'Mitos y Leyendas', color:'#fff0ce', icon:'moon', weight:22.5},
     {label:'Iconos de Santiago', color:'#f69e88', icon:'culturalCenter', weight:22.5},
-    {label:'Premio Sorpresa', color:'#eac9b1', icon:'gift', weight:5, fixed:true},
+    {label:'Premio Sorpresa', color:'#eac9b1', icon:'gift', weight:5, cooldownRounds:10, fixed:true},
     {label:'Gira de nuevo', color:'#ffe4a7', icon:'rotate', weight:5, fixed:true}
   ],
 };

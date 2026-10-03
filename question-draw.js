@@ -13,12 +13,22 @@ window.QuestionDraw=(()=>{
   try{localStorage.setItem(key,JSON.stringify(state));}catch{console.warn('No se pudo guardar el avance de las preguntas.');}
   return selected;
  }
- function category(questions,categories){
-  const eligible=categories.map((c,index)=>({index,weight:c.weight??1})).filter(c=>c.weight>0&&(c.index>=4||questions.some(q=>q.category===c.index)));
+ const prizeKey='bibliodera.prize-cooldown.v1';let prizeRemaining=0;
+ try{const n=Number(localStorage.getItem(prizeKey));if(Number.isSafeInteger(n)&&n>0)prizeRemaining=n;}catch{}
+ function category(questions,categories,{allowPrize=true}={}){
+  const cooldown=Math.max(0,Math.floor(categories[4]?.cooldownRounds??0));
+  const prizeAllowed=allowPrize&&(!cooldown||prizeRemaining===0);
+  function record(index){
+   if(index===4)prizeRemaining=cooldown;
+   else if(allowPrize&&index<4&&prizeRemaining>0)prizeRemaining--;
+   try{localStorage.setItem(prizeKey,String(prizeRemaining));}catch{}
+   return index;
+  }
+  const eligible=categories.map((c,index)=>({index,weight:c.weight??1})).filter(c=>(prizeAllowed||c.index!==4)&&c.weight>0&&(c.index>=4||questions.some(q=>q.category===c.index)));
   if(!eligible.length)return null;
   let value=Math.random()*eligible.reduce((sum,c)=>sum+c.weight,0);
-  for(const c of eligible){value-=c.weight;if(value<0)return c.index;}
-  return eligible[eligible.length-1].index;
+  for(const c of eligible){value-=c.weight;if(value<0)return record(c.index);}
+  return record(eligible[eligible.length-1].index);
  }
  return {pick,category};
 })();

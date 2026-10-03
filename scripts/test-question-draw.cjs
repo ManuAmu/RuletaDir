@@ -21,9 +21,43 @@ const remaining=small.filter(q=>q.id!==first.id);assert.equal(draw.pick(remainin
 saved={'bibliodera.draw.v1':'bad json'};assert(load().pick(questions,0));
 console.log('PASS: 800 selections, no repeats per category/cycle, restarts, cycle boundaries, added/deleted questions, one/empty question, corrupt history');
 const configContext={window:{},localStorage:{getItem:()=>null},console};vm.runInNewContext(fs.readFileSync('content.js','utf8').split('// Category identities')[0],configContext);
-const cats=configContext.window.BiblioderaContent.categories;
+const configuredCats=configContext.window.BiblioderaContent.categories;
+const cats=configuredCats.map(c=>({...c,cooldownRounds:0}));
 const controlledMath=Object.create(Math);const context={window:{},localStorage:storage,console,Math:controlledMath};vm.runInNewContext(code,context);
 const counts=[0,0,0,0,0,0];for(let i=0;i<10000;i++){controlledMath.random=()=>(i+.5)/10000;counts[context.window.QuestionDraw.category(questions,cats)]++;}
 assert.deepEqual(counts,[2250,2250,2250,2250,500,500]);
 for(let i=0;i<100;i++){controlledMath.random=()=>(i+.5)/100;assert.notEqual(context.window.QuestionDraw.category(questions.filter(q=>q.category!==2),cats),2);assert([4,5].includes(context.window.QuestionDraw.category([],cats)));}
 console.log('PASS weighted draw:',counts,'; empty categories excluded');
+
+// Questions 2 and 3 exclude the direct prize, retaining all other weights.
+for(const answered of [1,2]){
+ const continuation=[0,0,0,0,0,0];
+ for(let i=0;i<9500;i++){
+  controlledMath.random=()=>(i+.5)/9500;
+  continuation[context.window.QuestionDraw.category(questions,cats,{allowPrize:answered===0})]++;
+ }
+ assert.deepEqual(continuation,[2250,2250,2250,2250,0,500]);
+}
+controlledMath.random=()=>.945;
+assert.equal(context.window.QuestionDraw.category(questions,cats,{allowPrize:true}),4);
+assert.notEqual(context.window.QuestionDraw.category(questions,cats,{allowPrize:false}),4);
+console.log('PASS: prize excluded before questions 2/3, restored for a new match');
+
+// A prize is followed by at least ten regular match starts, across reloads.
+saved={};
+function reloadControlled(){const c={window:{},localStorage:storage,console,Math:controlledMath};vm.runInNewContext(code,c);return c.window.QuestionDraw;}
+let limited=reloadControlled();controlledMath.random=()=>.945;
+assert.equal(limited.category(questions,configuredCats),4);
+for(let i=0;i<10;i++){
+ limited=reloadControlled();controlledMath.random=()=>.999;
+ assert.equal(limited.category(questions,configuredCats),5);
+ assert.equal(Number(saved['bibliodera.prize-cooldown.v1']),10-i);
+ controlledMath.random=()=>0;
+ limited.category(questions,configuredCats,{allowPrize:false});
+ assert.equal(Number(saved['bibliodera.prize-cooldown.v1']),10-i);
+ controlledMath.random=()=>.945;
+ assert.notEqual(limited.category(questions,configuredCats),4);
+ assert.equal(Number(saved['bibliodera.prize-cooldown.v1']),9-i);
+}
+assert.equal(reloadControlled().category(questions,configuredCats),4);
+console.log('PASS: ten regular match starts between prizes; reloads, rerolls and later questions cannot bypass cooldown');

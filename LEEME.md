@@ -65,4 +65,6 @@ Comportamiento vigente: no hay botón Volver a jugar en los resultados. Acierto,
 
 ## Probabilidades locales
 
-Con las cuatro categorías de preguntas cargadas: 22,5 % cada una; Premio Sorpresa 5 % y Gira de nuevo 5 %. Los pesos se definen en content.js. Si una categoría queda sin preguntas, se excluye y se redistribuyen proporcionalmente los pesos disponibles.
+Con las cuatro categorías cargadas y Premio Sorpresa habilitado: 22,5 % por categoría de preguntas, Premio Sorpresa 5 % y Gira de nuevo 5 %. Premio solo participa antes de la primera pregunta. Después de un premio deben comenzar al menos 10 partidas con una categoría de preguntas antes de habilitarlo otra vez; recargar, Gira de nuevo y las preguntas 2/3 no reducen esa espera. La espera se conserva en el almacenamiento local del equipo.
+
+Cuando Premio está bloqueado, los pesos restantes se normalizan: cada categoría de preguntas 22,5/95 (23,68 %) y Gira de nuevo 5/95 (5,26 %). Las categorías sin preguntas se excluyen y los pesos disponibles se normalizan. El 5 % es la probabilidad cuando está habilitado, no una frecuencia garantizada ni un premio cada 20 giros.

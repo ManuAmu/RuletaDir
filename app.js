@@ -18,7 +18,7 @@
  const split=(l,r,cls='')=>`<section class="split ${cls}"><div class="copy">${l}</div><div class="visual">${r}</div></section>`;
  const screens={
  ruleta:()=>split(`<h1 class="title lettering-title"><span class="brand-art"><img src="assets/bibliodera-lettering.png" alt="La Bibliodera" width="1080" height="1080"></span></h1>${progress(true)}${QuestionStore.get().questions.length?'':'<p class="setup-note">Antes de jugar, cargá las preguntas en <a href="#configuracion">Configuración</a>.</p>'}`,`<div class="sticker">¡DALE UNA VUELTA!</div>${wheel(false,true)}<span class="spark spark-one" aria-hidden="true">✳</span>`,'cover'),
- girando:()=>split(`${eyebrow('RULETA EN MOVIMIENTO')}<h1>¿Qué<br>te va a<br><em>tocar?</em></h1><p role="status">La ruleta está girando…</p>`,wheel(true,true)),
+ girando:()=>split(`${eyebrow('RULETA EN MOVIMIENTO')}<h1>¿Qué<br> te va a<br> <em>tocar?</em></h1><p role="status">La ruleta está girando…</p>`,wheel(true,true)),
  categoria:()=>`<section class="center category-reveal" style="--category-color:${category().color}">${eyebrow('TE TOCÓ')}<h1>${escape(category().label)}</h1><p>${current.category===5?'¡Tenés otra vuelta!':current.category===4?'¡Hay una sorpresa para vos!':'Preparate para responder.'}</p></section>`,
  pregunta:()=>`<section class="question"><div class="question-meta">${progress()}</div><h1>${escape(current.text)}</h1><div class="response-time"><div class="time-label"><span>Tiempo para responder</span><strong><span id="seconds">${QuestionStore.get().seconds}</span> s</strong></div><div class="time-track" role="progressbar" aria-label="Tiempo restante" aria-valuemin="0" aria-valuemax="${QuestionStore.get().seconds}" aria-valuenow="${QuestionStore.get().seconds}"><div id="time-fill"></div></div></div><div class="answers">${current.options.map((s,i)=>`<button class="answer" data-answer="${i}"><span>${'ABCD'[i]}</span>${escape(s)}</button>`).join('')}</div></section>`,
  premio:()=>split(`${eyebrow('PREMIO SORPRESA')}<h1>¡Ganaste<br>un premio!</h1><p>Acercate al equipo de La Bibliodera<br>para recibir tu sorpresa.</p><p class="demo-note">Volvemos a la ruleta en un momento…</p>`,`${burst('★','success')}<div class="visual-caption">¡DISFRUTALO!</div>`),
@@ -31,7 +31,7 @@
  function go(id){if(location.hash==='#'+id)render();else location.hash=id;}
  function finishAnswer(kind){if(currentAnswered)return;currentAnswered=true;answering=true;clearInterval(countdown);results.push(kind==='correcta');stage.querySelectorAll('.answer').forEach(b=>b.disabled=true);go(kind);}
  function start(){if(starting||transitioning)return;starting=true;currentAnswered=false;if(complete())results=[];stage.querySelector('.hub-action').disabled=true;ShowSound.unlock();const questions=QuestionStore.get().questions.filter(q=>q.category<4);
- const selected=QuestionDraw.category(questions,data.categories);
+ const selected=QuestionDraw.category(questions,data.categories,{allowPrize:results.length===0});
  if(selected>=4){current={category:selected,special:true};}else{current=QuestionDraw.pick(questions,selected);}
  data.wheelRotation=1440-current.category*(360/data.categories.length);go('girando');}
  async function render(){const turn=++revision;stop();let id=location.hash.slice(1)||'ruleta';
